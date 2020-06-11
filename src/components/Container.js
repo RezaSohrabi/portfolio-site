@@ -2,23 +2,23 @@ import React from 'react'
 import Profile from '../components/Profile'
 import Card from '../components/Card'
 import LifeStory from './LifeStory';
-import SkillContainer from './AbilityContainer';
+import AbilityContainer from './AbilityContainer';
 
 class Container extends React.Component {
     render(){
-        const data = this.props.data;
         return(
             <div className='container'>
-                <Profile profile={data.profile}/>
-                <main>
-                    <Card title='Life Story'>
-                        {data.lifeStories.map((story, index) => <LifeStory key={index} story={story}/>)}
+                <Profile profile={this.props.profile}/>
+                <div className='separator'></div>
+                <main className='main'>
+                    <Card title='Life Story' style={{marginBottom : '15px'}}>
+                        <div className='timeline'></div>
+                        {this.props.lifeStories.map((story, index) => <LifeStory key={index} story={story}/>)}
                     </Card>
                     <Card title='Abilities'>
-                        {data.abilities.map((ability, index) => <SkillContainer key={index} ability={ability}/>)}
+                        {this.props.abilities.map((ability, index) => <AbilityContainer key={index} ability={ability}/>)}
                     </Card>
                 </main>
-              
             </div>
         )
     }

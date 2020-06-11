@@ -7,14 +7,16 @@ class AbilityContainer extends React.Component {
      const ability = this.props.ability;
 
         return(
-            <section className='ability-container'>
-                <div>{ability.field}</div>
-                {ability.skills.map((skill, index)=> (
-                    <a href={skill.site}>
-                        <img src={skill.icon} />
-                        <div>{skill.name}</div>
-                    </a>
-                ))}
+            <section className='ability-wrapper'>
+                <div className='header'>{ability.field}</div>
+                <div className='skill-wrapper'>
+                    {ability.skills.map((skill, index)=> (
+                        <a className='skill' href={skill.link} target='_blank'>
+                            <img className='skill__image' src={skill.icon} />
+                            <div>{skill.name}</div>
+                        </a>
+                    ))}
+                </div>
             </section>
         )
     }

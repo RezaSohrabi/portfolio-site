@@ -8,20 +8,15 @@ class LifeStory extends React.Component {
 
         return(
             <section className='story'>
-                <div>{console.log(story)}
-                    <div>{story.time}</div>
-                </div>
-                <div>
-                    <img src={story.image} />
-                </div>
-                <div>
-                    <div>{story.title}</div>
-                    <div>From 
-                        <a href={story.fromLink} >
+                <div className='story__date'>{story.time}</div>
+                <a href={story.fromLink} target='_blank' ><img className='story__image' src={story.image} /></a>
+                <div className='story__info'>
+                    <div className='header'>{story.title}</div>
+                    <div>At : <a className='from-link' href={story.fromLink} target='_blank' >
                             {story.from}  
                         </a>
                     </div>
-                    <div>{story.description}</div>
+                    <div className='desc'>{story.description}</div>
                 </div>
       
             </section>

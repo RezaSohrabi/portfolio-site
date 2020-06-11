@@ -1,8 +1,10 @@
 $primary-color : #212121;
 $secondary-color : #303030;
-$title-color : #DB4436;
+$secondary-lighter : #515151;
+$title-color : #26a69a;
 $text-color : #E0F2F1;
-$thirdary-color : #80CBC4;
+$thirdary-color : #26a69a;
+//#80CBC4
 $rounded : 50%;
 
 $primary-font : -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,7 +12,65 @@ $primary-font : -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen
 sans-serif;
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+}
+
+::-moz-selection {
+  background: $thirdary-color;
+  text-shadow: none;
+}
+
+::selection {
+  background: $thirdary-color;
+  text-shadow: none;
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+h1, h2, h3, h4, h5 {
+  color: $title-color;
+  font-weight: normal;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #707070;
+  margin: 1em 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $secondary-color;
+  border: 1px solid $secondary-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #393939;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
 }
 
 body {
@@ -18,17 +78,20 @@ body {
   font-family: $primary-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: lighter;
   background-color: $primary-color;
+  color: $text-color;
+  line-height: 24px;
 }
 
-@mixin row-flex {
+.flex-row {
   display: flex;
   flex-direction: row;
 }
 
-@mixin column-flex {
+.flex-column {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 p{
@@ -42,20 +105,208 @@ code {
 }
 
 .App {
-  margin: 15px;
+  margin: 15px 10%;
 }
 
 .section {
   background-color: $secondary-color;
+  @extend .flex-column;
+  position: relative;
+  .timeline {
+    height: inherit;
+    border-left: 3px solid $thirdary-color;
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    left: 35%;
+    z-index: 0;
+  }
 }
 
 .container {
-  @include row-flex
+  @extend .flex-row;
+}
+
+.separator {
+  flex: 22%;
+}
+
+.main {
+  flex: 67%;
+  margin-left: 30px;
+  .story {
+    @extend .flex-row;
+    padding: 30px 50px;
+    z-index: 1;
+
+    &__date {
+      flex : 10%;
+    }
+
+    &__image{
+      width: 160px;
+      height: 120px;
+      border-radius: 3px;
+      border: 3px solid $thirdary-color;
+      margin: 0 15px;
+    }
+
+    &__info {
+      flex : 45%;
+      .header {
+        color: $thirdary-color;
+        font-weight: normal;
+      }
+      .from-link {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      .desc {
+         margin: 5px 0;
+      }
+    }
+  }
+
+  .ability-wrapper {
+    margin: 15px 50px;
+
+    .header {
+      padding: 10px;
+      border-bottom: 1px solid #707070;
+      color: $thirdary-color;
+      font-weight: normal;
+    }
+
+    .skill-wrapper {
+      @extend .flex-row;
+
+      .skill {
+        color: $text-color;
+        text-align: center;
+        text-decoration: none;
+        margin: 15px;
+
+        &__image {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
 }
 
 
+.profile {
+  position: fixed;
+  width: 22%;
+  height: calc(100vh - 30px);
 
+  .profile-wrapper {
+    @extend .flex-column;
+    align-items: center;
+    height: inherit;
+  }
 
+  &__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid $title-color;
+    margin-top: 25px;
+  }
 
+  &__content {
+    margin: 0 30px;
+    flex-grow: 1;
+  }
 
+  .icon-wrapper {
+    @extend .flex-row;
+    justify-content: space-between;
+    margin-top: 15px;
 
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .copyrights{
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width : 1100px) {
+  .App {
+    margin: 0;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .profile {
+    position: inherit;
+    margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+
+    .icon-wrapper {
+      justify-content: center;
+      margin-bottom: 25px;
+
+      .link {
+        margin: 0 25px;
+      }
+    }
+
+    .copyrights {
+      display: none
+    }
+  }
+
+  .main {
+    flex: 100%;
+    margin-left: 0;
+
+    .story__date {
+      flex: 17%;
+    }
+
+    .story__image {
+      width: 120px;
+      height: 100px;
+    }
+
+    .skill-wrapper {
+      flex-wrap: wrap;
+    }
+  }
+
+  .separator {
+    flex: 0%;
+  }
+  .section {
+    .timeline {
+      left: 38%;
+    }
+  }
+
+}
+
+@media screen and (min-width : 900px) {
+  .App {
+    margin: 15px 10%;
+  }
+}
+
+@media screen and (min-width : 1100px) and (max-width : 1300px) {
+  .App {
+    margin: 15px 3%;
+  }
+
+  .profile {
+    width: 25.5%;
+  }
+}

@@ -5,7 +5,7 @@ import Container from './Container'
 function App(props) {
   return (
     <div className="App">
-        <Container data={props.data}/>
+        <Container {...props.data}/>
     </div>
   );
 }
