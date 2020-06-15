@@ -8,22 +8,22 @@ export const profile = {
         {
             name : 'Github',
             link : 'https://github.com/rezasohrabi',
-            src : '/icons/github.png'
+            src : '/images/github.png'
         },
         {
             name : 'Twitter',
             link : 'https://twitter.com/rezasohrabi1995',
-            src : '/icons/twitter.png'
+            src : '/images/twitter.png'
         },
         {
             name : 'Facebook',
             link : 'https://www.facebook.com/reza.sohrabi.7906',
-            src : '/icons/facebook.png'
+            src : '/images/facebook.png'
         },
         {
             name : 'Instagram',
             link : 'https://www.instagram.com/rezasohrabi24/',
-            src : '/icons/instagram.png'
+            src : '/images/instagram.png'
         },
     ]
 }

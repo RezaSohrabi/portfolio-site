@@ -9,7 +9,7 @@ class LifeStory extends React.Component {
         return(
             <section className='story'>
                 <div className='story__date'>{story.time}</div>
-                <a href={story.fromLink} target='_blank' ><img className='story__image' src={story.image} /></a>
+                <a className='story__link' href={story.fromLink} target='_blank' ><img className='story__image' src={story.image} /></a>
                 <div className='story__info'>
                     <div className='header'>{story.title}</div>
                     <div>At : <a className='from-link' href={story.fromLink} target='_blank' >
