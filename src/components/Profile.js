@@ -20,7 +20,7 @@ class Profile extends React.Component {
                         <div>Location : {profile.location}</div>
                         <div className='icon-wrapper'>{medias}</div>
                     </div>
-                    <div className='copyrights'>Copyrights <span dangerouslySetInnerHTML={{ "__html": "&copy;" }} /> 2020  Developed by heart</div>
+                    <div className='copyrights'>Copyrights <span dangerouslySetInnerHTML={{ "__html": "&copy;" }} /> {new Date().getFullYear()}  Developed by heart</div>
                 </div>
             </section>
         )
